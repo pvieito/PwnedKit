@@ -4,11 +4,21 @@ Swift framework and tool to check paswords against the [Have I Been Pwned](https
 
 ## Requirements
 
-`PwnedKit` requires Swift 4.0 or later and has been tested both on macOS and Linux.  
+`PwnedKit` requires Swift 4.0 or later and has been tested both on macOS and Linux.
+
+## Usage
+
+`PwnedTool` is Command Line tool that will show you how many occurrences of each input password are found in the HIBP database:
+
+    $ swift run PwnedTool -i passw0rd Secure5
+    [*] passw0rd
+    [ ] Occurrences: 200297
+    [*] Secure5
+    [ ] Occurrences: 2
 
 ## Important
 
-This library never sends the password over the network nor does it store the passwords processed. You can read about how it works [here](https://www.troyhunt.com/ive-just-launched-pwned-passwords-version-2/#cloudflareprivacyandkanonymity)
+This library never sends the password over the network nor does it store the passwords processed. You can read about how it works [here](https://www.troyhunt.com/ive-just-launched-pwned-passwords-version-2/#cloudflareprivacyandkanonymity).
 
 ## Authors
 
