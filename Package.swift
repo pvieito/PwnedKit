@@ -9,14 +9,12 @@ let package = Package(
         .library(name: "PwnedKit", targets: ["PwnedKit"])
     ],
     dependencies: [
-        .package(url: "../CommandLineKit", .branch("master")),
-        .package(url: "../LoggerKit", .branch("master")),
-        .package(url: "../CryptoSwift", .branch("master")),
+        .package(url: "https://github.com/pvieito/CommandLineKit.git", .branch("master")),
+        .package(url: "https://github.com/pvieito/LoggerKit.git", .branch("master")),
+        .package(url: "https://github.com/krzyzanowskim/CryptoSwift.git", .branch("master")),
     ],
     targets: [
-        .target(name: "PwnedTool",
-                dependencies: ["LoggerKit", "CommandLineKit", "PwnedKit"],
-                path: "PwnedTool"),
+        .target(name: "PwnedTool", dependencies: ["LoggerKit", "CommandLineKit", "PwnedKit"], path: "PwnedTool"),
         .target(name: "PwnedKit", dependencies: ["CryptoSwift"], path: "PwnedKit"),
     ]
 )

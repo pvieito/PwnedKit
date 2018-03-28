@@ -18,4 +18,3 @@ This library never sends the password over the network nor does it store the pas
 ## License
 
 `PwnedKit` is available under the MIT license. See the LICENSE file for more info.
-`
