@@ -1,6 +1,6 @@
 #  PwnedKit
 
-Swift framework and tool to check paswords against the [Have I Been Pwned](https://haveibeenpwned.com/Passwords) API.
+Swift framework and tool to check passwords against the [Have I Been Pwned](https://haveibeenpwned.com/Passwords) API.
 
 ## Requirements
 
