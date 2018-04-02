@@ -23,7 +23,7 @@ This library never sends the password over the network nor does it store the pas
 ## Authors
 
 - Initial version as [`PwnedPasswords`](https://github.com/foffer/PwnedPasswords): [foffer](https://github.com/foffer)
-- Current version as `PwnedKit` and Swift PM support: [pvieito](https://twitter.com/pvieito)
+- Current version as `PwnedKit`, with `PwnedTool` and Swift PM support: [pvieito](https://twitter.com/pvieito)
 
 ## License
 
