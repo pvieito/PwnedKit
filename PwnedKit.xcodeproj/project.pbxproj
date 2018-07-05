@@ -240,10 +240,12 @@
 				TargetAttributes = {
 					AAD47201206C431B00573780 = {
 						CreatedOnToolsVersion = 9.3;
+						LastSwiftMigration = 1000;
 						ProvisioningStyle = Automatic;
 					};
 					AAFA367B1F0A94F300A976E1 = {
 						CreatedOnToolsVersion = 9.0;
+						LastSwiftMigration = 1000;
 					};
 				};
 			};
@@ -372,7 +374,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.pvieito.PwnedKit;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
@@ -399,7 +401,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.pvieito.PwnedKit;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
@@ -528,7 +530,7 @@
 				LIBRARY_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pvieito.PwnedTool;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -542,7 +544,7 @@
 				LIBRARY_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pvieito.PwnedTool;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};
