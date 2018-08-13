@@ -527,7 +527,10 @@
 				DEVELOPMENT_TEAM = T7MC635YG5;
 				INFOPLIST_FILE = PwnedTool/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
-				LIBRARY_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				LIBRARY_SEARCH_PATHS = (
+					"@executable_path",
+					"$(TOOLCHAIN_DIR)/usr/lib/swift/macosx",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.pvieito.PwnedTool;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -541,7 +544,10 @@
 				DEVELOPMENT_TEAM = T7MC635YG5;
 				INFOPLIST_FILE = PwnedTool/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
-				LIBRARY_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				LIBRARY_SEARCH_PATHS = (
+					"@executable_path",
+					"$(TOOLCHAIN_DIR)/usr/lib/swift/macosx",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.pvieito.PwnedTool;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
