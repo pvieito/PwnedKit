@@ -69,6 +69,7 @@
 
 /* Begin PBXFileReference section */
 		AA64059C2071A94900F17D45 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		AAC3603E21EBC2AD002209E4 /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		AAD471F2206C41E200573780 /* CryptoSwift.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CryptoSwift.xcodeproj; path = ../../../Documents/Developer/CryptoSwift/CryptoSwift.xcodeproj; sourceTree = "<group>"; };
 		AAD47202206C431B00573780 /* PwnedKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PwnedKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAD47205206C431C00573780 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -155,6 +156,7 @@
 				AAD47213206C440B00573780 /* CommandLineKit.xcodeproj */,
 				AAD471F2206C41E200573780 /* CryptoSwift.xcodeproj */,
 				AA64059C2071A94900F17D45 /* README.md */,
+				AAC3603E21EBC2AD002209E4 /* Package.swift */,
 				AAFA367E1F0A94F300A976E1 /* PwnedTool */,
 				AAD47203206C431B00573780 /* PwnedKit */,
 				AAFA367D1F0A94F300A976E1 /* Products */,
