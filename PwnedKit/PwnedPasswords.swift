@@ -9,7 +9,6 @@ import Foundation
 import CryptoSwift
 
 public class PwnedPasswords: NSObject {
-    
     public enum PwnedError: LocalizedError {
         case emptyPassword
         case responseMalformed

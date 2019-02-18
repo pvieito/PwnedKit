@@ -23,24 +23,22 @@ do {
 }
 catch {
     cli.printUsage(error)
-    exit(-1)
+    exit(EX_USAGE)
 }
 
 if helpOption.value {
     cli.printUsage()
-    exit(-1)
+    exit(0)
 }
 
 Logger.logMode = .commandLine
 Logger.logLevel = verboseOption.value ? .debug : .info
 
 guard let inputPasswords = inputOption.value else {
-    Logger.log(error: "No input items specified.")
-    exit(-1)
+    Logger.log(fatalError: "No input items specified.")
 }
 
 for inputPassword in inputPasswords {
-    
     let semaphore = DispatchSemaphore(value: 0)
     
     if inputPasswords.count > 1 {

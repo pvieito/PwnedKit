@@ -12,7 +12,6 @@ internal protocol API {
 }
 
 internal class PwnedPasswordsAPI: API {
-    
     public enum ResponseError: LocalizedError {
         case noData
         
