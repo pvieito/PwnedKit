@@ -8,6 +8,10 @@
 import Foundation
 import CryptoSwift
 
+#if canImport(FoundationNetworking)
+import FoundationNetworking
+#endif
+
 public class PwnedPasswords: NSObject {
     private static let endpointURL = URL(string: "https://api.pwnedpasswords.com/range")!
 
