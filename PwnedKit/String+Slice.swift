@@ -6,6 +6,7 @@
 //
 
 import Foundation
+
 extension String {
     func slice(from: Int) -> String {
         return String(self[createIndex(offset: from)...])

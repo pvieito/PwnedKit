@@ -39,22 +39,15 @@ guard let inputPasswords = inputOption.value else {
 }
 
 for inputPassword in inputPasswords {
-    let semaphore = DispatchSemaphore(value: 0)
-    
     if inputPasswords.count > 1 {
         Logger.log(important: inputPassword)
     }
     
-    PwnedPasswords.shared.check(inputPassword) { (occurences, error) in
-        if let error = error {
-            Logger.log(warning: error)
-        }
-        else if let occurences = occurences {
-            Logger.log(info: "Occurrences: \(occurences)")
-        }
-        
-        semaphore.signal()
+    do {
+        let occurences = try PwnedPasswords.check(inputPassword)
+        Logger.log(info: "Occurrences: \(occurences)")
     }
-    
-    semaphore.wait()
+    catch {
+        Logger.log(warning: error)
+    }
 }

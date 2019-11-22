@@ -29,6 +29,10 @@ let package = Package(
             name: "PwnedKit",
             dependencies: ["CryptoSwift"],
             path: "PwnedKit"
+        ),
+        .testTarget(
+            name: "PwnedKitTests",
+            dependencies: ["PwnedKit"]
         )
     ]
 )
