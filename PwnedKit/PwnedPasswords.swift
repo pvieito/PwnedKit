@@ -45,9 +45,9 @@ public class PwnedPasswords: NSObject {
         let inputData = Data(input.utf8)
         let hashData = Data(Insecure.SHA1.hash(data: inputData))
         let hashString = hashData.hexString.uppercased()
-        let hashPrefix = hashString.slice(to: 5)
-        let hashSuffix = hashString.slice(from: 5)
-        
+        let hashPrefix = hashString[offset: ..<5]
+        let hashSuffix = hashString[offset: 5...]
+
         let requestURL = PwnedPasswords.endpointURL.appendingPathComponent(hashPrefix)
         let rawResponse = try String(contentsOf: requestURL)
         let parsedResponse = try self.parseResponse(rawResponse)
