@@ -12,10 +12,10 @@ import XCTest
 
 class PwnedPasswordsTests: XCTestCase {
     func testPwnedPasswords() throws {
-        XCTAssertGreaterThanOrEqual(try PwnedPasswords.check("1234"), 1)
-        XCTAssertGreaterThanOrEqual(try PwnedPasswords.check("password"), 1)
+        XCTAssertGreaterThanOrEqual(try PwnedPasswordManager.check(password: "1234"), 1)
+        XCTAssertGreaterThanOrEqual(try PwnedPasswordManager.check(password: "password"), 1)
         
-        XCTAssertEqual(try PwnedPasswords.check(UUID().uuidString), 0)
-        XCTAssertEqual(try PwnedPasswords.check(UUID().uuidString), 0)
+        XCTAssertEqual(try PwnedPasswordManager.check(password: UUID().uuidString), 0)
+        XCTAssertEqual(try PwnedPasswordManager.check(password: UUID().uuidString), 0)
     }
 }

@@ -39,7 +39,7 @@ struct PwnedTool: ParsableCommand {
             }
             
             do {
-                let occurences = try PwnedPasswords.check(inputPassword)
+                let occurences = try PwnedPasswordManager.check(password: inputPassword)
                 Logger.log(info: "Occurrences: \(occurences)")
             }
             catch {

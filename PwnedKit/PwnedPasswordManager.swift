@@ -1,5 +1,5 @@
 //
-//  PwnedPasswords.swift
+//  PwnedPasswordManager.swift
 //  PwnedKit
 //
 //  Created by Christoffer Buusmann on 28/03/2018.
@@ -18,9 +18,10 @@ import CryptoKit
 import Crypto
 #endif
 
-public class PwnedPasswords: NSObject {
-    private static let endpointURL = URL(string: "https://api.pwnedpasswords.com/range")!
+@available(*, deprecated, renamed: "PwnedPasswordManager")
+public typealias PwnedPasswords = PwnedPasswordManager
 
+public class PwnedPasswordManager {
     public enum PwnedError: LocalizedError {
         case emptyPassword
         case responseMalformed
@@ -35,20 +36,25 @@ public class PwnedPasswords: NSObject {
         }
     }
     
-    public static let shared = PwnedPasswords()
-    
+    private static let endpointURL = URL(string: "https://api.pwnedpasswords.com/range")!
+
+    @available(*, deprecated, renamed: "check(password:)")
     public static func check(_ input: String) throws -> Int {
-        guard input.count > 0 else {
+        return try self.check(password: input)
+    }
+    
+    public static func check(password: String) throws -> Int {
+        guard password.count > 0 else {
             throw PwnedError.emptyPassword
         }
         
-        let inputData = Data(input.utf8)
-        let hashData = Data(Insecure.SHA1.hash(data: inputData))
+        let passwordData = Data(password.utf8)
+        let hashData = Data(Insecure.SHA1.hash(data: passwordData))
         let hashString = hashData.hexString.uppercased()
         let hashPrefix = hashString[offset: ..<5]
         let hashSuffix = hashString[offset: 5...]
 
-        let requestURL = PwnedPasswords.endpointURL.appendingPathComponent(hashPrefix)
+        let requestURL = self.endpointURL.appendingPathComponent(hashPrefix)
         let rawResponse = try String(contentsOf: requestURL)
         let parsedResponse = try self.parseResponse(rawResponse)
         let occurrences = parsedResponse[hashSuffix] ?? 0
