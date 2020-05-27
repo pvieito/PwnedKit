@@ -6,10 +6,16 @@
 //
 
 import Foundation
-import CryptoSwift
+import FoundationKit
 
 #if canImport(FoundationNetworking)
 import FoundationNetworking
+#endif
+
+#if canImport(CryptoKit) && !NO_CRYPTOKIT
+import CryptoKit
+#elseif canImport(Crypto)
+import Crypto
 #endif
 
 public class PwnedPasswords: NSObject {
@@ -21,8 +27,10 @@ public class PwnedPasswords: NSObject {
         
         public var errorDescription: String? {
             switch self {
-            case .emptyPassword: return "The password provided is empty."
-            case .responseMalformed: return "The API response is malformed and cannot be parsed."
+            case .emptyPassword:
+                return "The provided password is empty."
+            case .responseMalformed:
+                return "The API response is malformed and cannot be parsed."
             }
         }
     }
@@ -34,9 +42,11 @@ public class PwnedPasswords: NSObject {
             throw PwnedError.emptyPassword
         }
         
-        let hash = input.sha1().uppercased()
-        let hashPrefix = hash.slice(to: 5)
-        let hashSuffix = hash.slice(from: 5)
+        let inputData = Data(input.utf8)
+        let hashData = Data(Insecure.SHA1.hash(data: inputData))
+        let hashString = hashData.hexString.uppercased()
+        let hashPrefix = hashString.slice(to: 5)
+        let hashSuffix = hashString.slice(from: 5)
         
         let requestURL = PwnedPasswords.endpointURL.appendingPathComponent(hashPrefix)
         let rawResponse = try String(contentsOf: requestURL)
@@ -47,22 +57,18 @@ public class PwnedPasswords: NSObject {
 
     private static func parseResponse(_ string: String) throws -> Dictionary<String, Int> {
         let responseLines = string.components(separatedBy: .newlines)
-        
         guard responseLines.count > 1 else {
             throw PwnedError.responseMalformed
         }
         
         var resultDictionary: Dictionary<String, Int> = [:]
-        
         for responseString in responseLines {
             let responseResult = responseString.split(separator: ":")
             if responseResult.count != 2 { continue }
-            
             let suffix = String(responseResult[0])
             let occurrences = Int(responseResult[1])
             resultDictionary[suffix] = occurrences
         }
-        
         return resultDictionary
     }
 }

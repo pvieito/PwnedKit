@@ -8,46 +8,45 @@
 
 import Foundation
 import LoggerKit
-import CommandLineKit
+import FoundationKit
 import PwnedKit
+import ArgumentParser
 
-let inputOption = MultiStringOption(shortFlag: "i", longFlag: "input", required: true, helpMessage: "Input passwords.")
-let verboseOption = BoolOption(shortFlag: "v", longFlag: "verbose", helpMessage: "Verbose mode.")
-let helpOption = BoolOption(shortFlag: "h", longFlag: "help", helpMessage: "Prints a help message.")
-
-let cli = CommandLineKit.CommandLine()
-cli.addOptions(inputOption, verboseOption, helpOption)
-
-do {
-    try cli.parse(strict: true)
-}
-catch {
-    cli.printUsage(error)
-    exit(EX_USAGE)
-}
-
-if helpOption.value {
-    cli.printUsage()
-    exit(0)
-}
-
-Logger.logMode = .commandLine
-Logger.logLevel = verboseOption.value ? .debug : .info
-
-guard let inputPasswords = inputOption.value else {
-    Logger.log(fatalError: "No input items specified.")
-}
-
-for inputPassword in inputPasswords {
-    if inputPasswords.count > 1 {
-        Logger.log(important: inputPassword)
+struct PwnedTool: ParsableCommand {
+    static var configuration: CommandConfiguration {
+        return CommandConfiguration(commandName: String(describing: Self.self))
     }
     
-    do {
-        let occurences = try PwnedPasswords.check(inputPassword)
-        Logger.log(info: "Occurrences: \(occurences)")
+    @Option(name: .shortAndLong, parsing: .upToNextOption, help: "Input passwords.")
+    var input: Array<String>
+    
+    @Flag(name: .shortAndLong, help: "Verbose mode.")
+    var verbose: Bool
+    
+    func validate() throws {
+        guard !self.input.isEmpty else {
+            throw ValidationError("No input items specified.")
+        }
     }
-    catch {
-        Logger.log(warning: error)
+    
+    func run() throws {
+        Logger.logMode = .commandLine
+        Logger.logLevel = self.verbose ? .debug : .info
+        
+        for inputPassword in self.input {
+            if self.input.count > 1 {
+                Logger.log(important: inputPassword)
+            }
+            
+            do {
+                let occurences = try PwnedPasswords.check(inputPassword)
+                Logger.log(info: "Occurrences: \(occurences)")
+            }
+            catch {
+                Logger.log(warning: error)
+            }
+        }
     }
 }
+
+PwnedTool.main()
