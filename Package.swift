@@ -18,9 +18,9 @@ let package = Package(
         )
     ],
     dependencies: [
-        .package(url: "https://github.com/pvieito/CommandLineKit.git", .branch("master")),
-        .package(url: "https://github.com/pvieito/FoundationKit.git", .branch("master")),
-        .package(url: "https://github.com/pvieito/LoggerKit.git", .branch("master")),
+        .package(url: "git@github.com:pvieito/CommandLineKit.git", .branch("master")),
+        .package(url: "git@github.com:pvieito/FoundationKit.git", .branch("master")),
+        .package(url: "git@github.com:pvieito/LoggerKit.git", .branch("master")),
         .package(url: "https://github.com/apple/swift-argument-parser", .upToNextMinor(from: "0.0.6")),
         .package(url: "https://github.com/apple/swift-crypto", from: "1.0.0"),
     ],
