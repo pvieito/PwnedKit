@@ -21,13 +21,7 @@ struct PwnedTool: ParsableCommand {
     var input: Array<String>
     
     @Flag(name: .shortAndLong, help: "Verbose mode.")
-    var verbose: Bool
-    
-    func validate() throws {
-        guard !self.input.isEmpty else {
-            throw ValidationError("No input items specified.")
-        }
-    }
+    var verbose: Bool = false
     
     func run() throws {
         Logger.logMode = .commandLine
