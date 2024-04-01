@@ -1,11 +1,11 @@
-// swift-tools-version:5.2
+// swift-tools-version:5.9
 
 import PackageDescription
 
 let package = Package(
-    name: "PwnedKit",
+    name: "ModelIOTool",
     platforms: [
-        .macOS(.v10_15)
+        .macOS(.v13),
     ],
     products: [
         .executable(
@@ -15,29 +15,36 @@ let package = Package(
         .library(
             name: "PwnedKit",
             targets: ["PwnedKit"]
-        )
+        ),
     ],
     dependencies: [
-        .package(url: "git@github.com:pvieito/CommandLineKit.git", .branch("master")),
-        .package(url: "git@github.com:pvieito/FoundationKit.git", .branch("master")),
-        .package(url: "git@github.com:pvieito/LoggerKit.git", .branch("master")),
-        .package(url: "https://github.com/apple/swift-argument-parser", from: "0.0.6"),
+        .package(url: "git@github.com:pvieito/LoggerKit.git", branch: "master"),
+        .package(url: "git@github.com:pvieito/FoundationKit.git", branch: "master"),
+        .package(url: "https://github.com/apple/swift-argument-parser", from: "1.0.0"),
         .package(url: "https://github.com/apple/swift-crypto", from: "1.0.0"),
     ],
     targets: [
-        .target(
+        .executableTarget(
             name: "PwnedTool",
-            dependencies: ["LoggerKit", "CommandLineKit", "PwnedKit", .product(name: "ArgumentParser", package: "swift-argument-parser")],
+            dependencies: [
+                "LoggerKit",
+                "FoundationKit",
+                "PwnedKit",
+                .product(name: "ArgumentParser", package: "swift-argument-parser"),
+            ],
             path: "PwnedTool"
         ),
         .target(
             name: "PwnedKit",
-            dependencies: ["FoundationKit", .product(name: "Crypto", package: "swift-crypto")],
+            dependencies: [
+                "FoundationKit",
+                .product(name: "Crypto", package: "swift-crypto"),
+            ],
             path: "PwnedKit"
         ),
         .testTarget(
             name: "PwnedKitTests",
             dependencies: ["PwnedKit"]
-        )
+        ),
     ]
 )

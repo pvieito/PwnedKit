@@ -1,6 +1,6 @@
 //
-//  main.swift
-//  ProcessTool
+//  PwnedTool.swift
+//  PwnedTool
 //
 //  Created by Pedro José Pereira Vieito on 12/7/17.
 //  Copyright © 2017 Pedro José Pereira Vieito. All rights reserved.
@@ -12,6 +12,7 @@ import FoundationKit
 import PwnedKit
 import ArgumentParser
 
+@main
 struct PwnedTool: ParsableCommand {
     static var configuration: CommandConfiguration {
         return CommandConfiguration(commandName: String(describing: Self.self))
@@ -33,8 +34,8 @@ struct PwnedTool: ParsableCommand {
             }
             
             do {
-                let occurences = try PwnedPasswordManager.check(password: inputPassword)
-                Logger.log(info: "Occurrences: \(occurences)")
+                let occurrences = try PwnedPasswordManager.check(password: inputPassword)
+                Logger.log(info: "Occurrences: \(occurrences)")
             }
             catch {
                 Logger.log(warning: error)
@@ -42,5 +43,3 @@ struct PwnedTool: ParsableCommand {
         }
     }
 }
-
-PwnedTool.main()

@@ -24,13 +24,13 @@ public typealias PwnedPasswords = PwnedPasswordManager
 public class PwnedPasswordManager {
     public enum PwnedError: LocalizedError {
         case emptyPassword
-        case malformedReponse
+        case malformedResponse
         
         public var errorDescription: String? {
             switch self {
             case .emptyPassword:
                 return "The provided password is empty."
-            case .malformedReponse:
+            case .malformedResponse:
                 return "The API response is malformed and cannot be parsed."
             }
         }
@@ -64,7 +64,7 @@ public class PwnedPasswordManager {
     private static func parseResponse(_ string: String) throws -> Dictionary<String, Int> {
         let responseLines = string.components(separatedBy: .newlines)
         guard responseLines.count > 1 else {
-            throw PwnedError.malformedReponse
+            throw PwnedError.malformedResponse
         }
         
         var resultDictionary: Dictionary<String, Int> = [:]
