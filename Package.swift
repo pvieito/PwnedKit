@@ -3,7 +3,7 @@
 import PackageDescription
 
 let package = Package(
-    name: "ModelIOTool",
+    name: "PwnedKit",
     platforms: [
         .macOS(.v13),
     ],
