@@ -18,7 +18,7 @@ Swift framework and tool to check passwords against the [Have I Been Pwned](http
 
 ## Important
 
-This library never sends the password over the network nor does it store the passwords processed. You can read about how it works [here](https://www.troyhunt.com/ive-just-launched-pwned-passwords-version-2/#cloudflareprivacyandkanonymity).
+This library never sends passwords over the network or stores processed passwords. You can read about how it works [here](https://www.troyhunt.com/ive-just-launched-pwned-passwords-version-2/#cloudflareprivacyandkanonymity).
 
 ## Authors
 
