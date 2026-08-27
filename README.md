@@ -1,4 +1,4 @@
-#  PwnedKit
+# PwnedKit
 
 Swift framework and tool to check passwords against the [Have I Been Pwned](https://haveibeenpwned.com/Passwords) API.
 
@@ -8,7 +8,7 @@ Swift framework and tool to check passwords against the [Have I Been Pwned](http
 
 ## Usage
 
-`PwnedTool` is Command Line tool that will show you how many occurrences of each input password are found in the HIBP database:
+`PwnedTool` is a command-line tool that shows how many occurrences of each input password are found in the HIBP database:
 
     $ swift run PwnedTool -i passw0rd Secure5
     [*] passw0rd
@@ -23,7 +23,7 @@ This library never sends the password over the network nor does it store the pas
 ## Authors
 
 - Initial version as [`PwnedPasswords`](https://github.com/foffer/PwnedPasswords): [foffer](https://github.com/foffer)
-- Current version as `PwnedKit`, with `PwnedTool` and Swift PM support: [pvieito](https://twitter.com/pvieito)
+- Current version as `PwnedKit`, with `PwnedTool` and SwiftPM support: [pvieito](https://twitter.com/pvieito)
 
 ## License
 
