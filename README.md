@@ -4,7 +4,7 @@ Swift framework and tool to check passwords against the [Have I Been Pwned](http
 
 ## Requirements
 
-`PwnedKit` requires Swift 4.0 or later and has been tested both on macOS and Linux.
+`PwnedKit` requires Swift 6.2 or later and has been tested both on macOS and Linux.
 
 ## Usage
 
